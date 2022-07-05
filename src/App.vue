@@ -41,7 +41,7 @@
       <h2>Converted images:</h2>
 
       <div class="images" v-if="images.length">
-        <img v-for="(image, index) in images" class="image" :key="index" :src="image" />
+        <img v-for="(image, index) in images" class="image" :key="index" :src="image" @click="downloadImage(image)"/>
       </div>
 
       <div class="empty" v-else>None</div>
@@ -204,6 +204,13 @@ export default defineComponent({
       }, 150)
     };
 
+    const downloadImage = (img: string) => {
+      const link = document.createElement('a');
+      link.href = img;
+      link.download = 'image.png';
+      link.click();
+    };
+
     return {
       outputImg,
       colors,
@@ -211,7 +218,8 @@ export default defineComponent({
       inputProgress,
       outputProgress,
       setInput,
-      setOutput
+      setOutput,
+      downloadImage
     };
 
   }
@@ -343,7 +351,7 @@ input[type=file] {
 }
 
 .image:hover {
-  transform: scale(3)
+  transform: scale(2.2)
 }
 
 @keyframes title-gradient {
