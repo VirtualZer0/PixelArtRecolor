@@ -6,6 +6,10 @@
   <img src="https://img.shields.io/website?down_message=offline&up_message=online&url=https%3A%2F%2Fvirtualzer0.github.io%2FPixelArtRecolor%2F" /></a>
 <a href="https://vuejs.org" alt="VueJS">
   <img src="https://img.shields.io/github/package-json/dependency-version/virtualzer0/PixelArtRecolor/vue" /></a>
+  
+  
+### ![Header Logo](https://user-images.githubusercontent.com/45962846/177431144-6685b541-a3fc-4893-ba51-1585e24e11d9.png)
+
 
 ## 👁‍🗨  About
 This tool allows you to extract the color palette from images and transfer it to other images. The transfer uses the [Nearest neighbor search](https://en.wikipedia.org/wiki/Nearest_neighbor_search) algorithm (nearest-human-color library). Processing large images or a large palette can be time-consuming.
