@@ -196,8 +196,6 @@ export default defineComponent({
 
         });
 
-        console.log(nearestHumanColor('#555555'));
-
         setTimeout(() => {
           outputProgress.value = false;
         }, 150);
