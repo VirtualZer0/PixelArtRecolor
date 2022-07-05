@@ -8,6 +8,10 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "hex-rgb": "^5.0.0",
+    "nearest-human-color": "^1.0.3",
+    "normalize.css": "^8.0.1",
+    "rgb-hex": "^4.0.0",
     "vue": "^3.2.13"
   },
   "devDependencies": {

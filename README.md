@@ -1,4 +1,7 @@
-# pixel-art-recolor
+# PixelArt Recolor
+
+## About
+
 
 ## Project setup
 ```
