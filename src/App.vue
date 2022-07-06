@@ -79,7 +79,7 @@
 <script lang="ts">
 import { defineComponent, nextTick, ref } from 'vue';
 import rgbHex from 'rgb-hex';
-import hexRgb from 'hex-rgb';
+import hexRgb, { RgbaObject } from 'hex-rgb';
 
 
 export default defineComponent({
@@ -92,6 +92,8 @@ export default defineComponent({
 
     const inputProgress = ref(false);
     const outputProgress = ref(false);
+
+    let cache = new Map<string,RgbaObject>();
 
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     let nearestHumanColor = require('nearest-human-color').from({});
@@ -138,6 +140,7 @@ export default defineComponent({
 
               // eslint-disable-next-line @typescript-eslint/no-var-requires
               nearestHumanColor = require('nearest-human-color').from(colors.value);
+              cache = new Map<string,RgbaObject>();
             };
 
           };
@@ -181,7 +184,13 @@ export default defineComponent({
                 const b = data[i + 2];
                 const a = data[i + 3];
                 const color = '#'+rgbHex(r, g, b);
-                const nearest = hexRgb(nearestHumanColor(color));
+
+                let nearest = cache.get(color);
+                if (!nearest) {
+                  nearest = hexRgb(nearestHumanColor(color) as string);
+                  cache.set(color, nearest);
+                }
+
                 data[i] = nearest.red;
                 data[i + 1] = nearest.green;
                 data[i + 2] = nearest.blue;
