@@ -188,6 +188,7 @@ export default defineComponent({
 
                 let nearest = cache.get(color);
                 if (!nearest) {
+                  console.log(color)
                   nearest = hexRgb(nearestHumanColor(color) as string);
                   cache.set(color, nearest);
                 }
@@ -232,6 +233,8 @@ export default defineComponent({
 
     onMounted(() => {
       loadPalette();
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      nearestHumanColor = require('nearest-human-color').from(colors.value);
     });
 
     return {
@@ -243,7 +246,7 @@ export default defineComponent({
       setInput,
       setOutput,
       downloadImage,
-      savePalette
+      savePalette,
     };
 
   }
