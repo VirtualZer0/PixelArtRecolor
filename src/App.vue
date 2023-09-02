@@ -77,7 +77,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, nextTick, ref, onMounted } from 'vue';
+import { defineComponent, ref, onMounted } from 'vue';
 import rgbHex from 'rgb-hex';
 import hexRgb, { RgbaObject } from 'hex-rgb';
 
@@ -113,11 +113,11 @@ export default defineComponent({
               return;
             }
 
-            img.onload = (e) => {
+            img.onload = () => {
               const canvas = document.createElement('canvas');
               canvas.width = img.width;
               canvas.height = img.height;
-              const ctx = canvas.getContext('2d');
+              const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
               if (!ctx) {
                 return;
@@ -131,8 +131,8 @@ export default defineComponent({
                 const r = data[i];
                 const g = data[i + 1];
                 const b = data[i + 2];
-                const a = data[i + 3];
-                const color = '#'+rgbHex(r, g, b);
+                // const a = data[i + 3];
+                const color = `#${rgbHex(r, g, b)}`;
                 if (!colors.value.includes(color)) {
                   colors.value.push(color);
                 }
@@ -169,7 +169,7 @@ export default defineComponent({
               const canvas = document.createElement('canvas');
               canvas.width = img.width;
               canvas.height = img.height;
-              const ctx = canvas.getContext('2d');
+              const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
               if (!ctx) {
                 return;
@@ -183,8 +183,8 @@ export default defineComponent({
                 const r = data[i];
                 const g = data[i + 1];
                 const b = data[i + 2];
-                const a = data[i + 3];
-                const color = '#'+rgbHex(r, g, b);
+                // const a = data[i + 3];
+                const color = `#${rgbHex(r, g, b)}`;
 
                 let nearest = cache.get(color);
                 if (!nearest) {
