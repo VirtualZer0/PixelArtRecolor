@@ -114,9 +114,7 @@ export default defineComponent({
             }
 
             img.onload = () => {
-              const canvas = document.createElement('canvas');
-              canvas.width = img.width;
-              canvas.height = img.height;
+              const canvas = new OffscreenCanvas(img.width, img.height);
               const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
               if (!ctx) {
@@ -166,9 +164,7 @@ export default defineComponent({
             const img = new Image();
             img.src = ev.target.result;
             img.onload = () => {
-              const canvas = document.createElement('canvas');
-              canvas.width = img.width;
-              canvas.height = img.height;
+              const canvas = new OffscreenCanvas(img.width, img.height);
               const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
               if (!ctx) {
@@ -199,8 +195,11 @@ export default defineComponent({
               }
 
               ctx.putImageData(imageData, 0, 0);
-              const res = canvas.toDataURL('image/png', 1);
-              images.value.push(res);
+              canvas.convertToBlob()
+              .then(blob => {
+                images.value.push(URL.createObjectURL(blob));
+              });
+
             }
           };
           reader.readAsDataURL(file);
