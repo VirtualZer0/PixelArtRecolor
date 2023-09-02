@@ -2,7 +2,7 @@
 
 <a href="#">
   <img src="https://img.shields.io/github/last-commit/virtualzer0/pixelartrecolor"/></a>
-<a href="https://chatwords.ml" alt="Website">
+<a href="https://virtualzer0.github.io/PixelArtRecolor/" alt="Website">
   <img src="https://img.shields.io/website?down_message=offline&up_message=online&url=https%3A%2F%2Fvirtualzer0.github.io%2FPixelArtRecolor%2F" /></a>
 <a href="https://vuejs.org" alt="VueJS">
   <img src="https://img.shields.io/github/package-json/dependency-version/virtualzer0/PixelArtRecolor/vue" /></a>
